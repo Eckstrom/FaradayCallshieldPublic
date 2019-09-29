@@ -1,0 +1,69 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Call Blocking">
+
+        <SwitchPreference
+            android:key="blockBlacklistedCallsPreference"
+            android:title="Blacklisted"
+            android:summary="Blacklisted numbers will not be blocked."
+            />
+
+        <SwitchPreference
+            android:key="blockPrivateCallsPreference"
+            android:title="Unknown/Private"
+            android:summary="Unknown/private numbers will not be blocked."
+            />
+
+        <SwitchPreference
+            android:key="blockNonContactCallsPreference"
+            android:title="Non-Contact"
+            android:summary="Non-contact numbers will not be blocked."
+            />
+        <SwitchPreference
+            android:key="blockAllCallsPreference"
+            android:title="All Incoming"
+            android:summary="All incoming calls will not be blocked."
+            />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Message Blocking">
+
+        <SwitchPreference
+            android:key="blockBlacklistedMessagesPreference"
+            android:title="Blacklisted"
+            android:summary="Blacklisted messages will not be blocked."
+            />
+
+        <SwitchPreference
+            android:key="blockNonContactMessagesPreference"
+            android:title="Non-Contact"
+            android:summary="Non-contact messages will not be blocked."
+            />
+        <SwitchPreference
+            android:key="blockAllMessagesPreference"
+            android:title="All Incoming"
+            android:summary="All incoming messages will be blocked."
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Auto-SMS">
+
+        <CheckBoxPreference
+            android:key="enableAutoSMSPreference"
+            android:title="Auto-SMS"
+            android:summary="Blocked calls will not automatically receive a response SMS."/>
+
+        <EditTextPreference
+            android:inputType="number"
+            android:key="editTextPreference"
+            android:summary="Default Auto-SMS Response not set."
+            android:title="Default Auto-SMS Response"/>
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

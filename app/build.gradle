@@ -1,0 +1,90 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true
+        applicationId "edu.gatech.phileckstrom.faradaycallshield"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 3
+        versionName "3.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        freeFlavor{
+            dimension "default"
+
+        }
+
+        paidFlavor{
+            dimension "default"
+
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation "android.arch.lifecycle:viewmodel:1.1.1"
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'com.android.support:preference-v7:27.1.1'
+    implementation  'com.google.dagger:dagger:2.13'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.13'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.13'
+
+    // Room Persistence Library
+    // Room (use 1.1.0-beta1 for latest beta)
+    implementation "android.arch.persistence.room:runtime:1.1.0"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.0"
+    implementation "android.arch.lifecycle:livedata:1.1.1"
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'com.android.support:support-annotations:23.1.1'
+    }
+}
+
+ext {
+    //build
+    minSdkVersion = 21
+    compileSdkVersion = 27
+    buildToolsVersion = '27.0.3'
+
+    //3rd party
+    picassoVersion = '2.5.2'
+    circleImageViewVersion = '2.1.0'
+    viewPagerIndicatorVersion = '2.4.1'
+    daggerVersion = '2.13'
+
+    //android
+    supportLibraryVersion = '27.1.1'
+    constraintLayoutVersion = '1.0.2'
+    archLifecycleVersion = '1.0.3'
+    archLifecycleCompilerVersion = '1.0.0'
+    archLifecycleExtensionsVersion = '1.0.0'
+    roomVersion = '1.0.0'
+
+}

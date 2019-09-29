@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name = "colorPrimary">#CFB53B</color>
+    <color name = "colorPrimaryDark">#ad962a</color>
+    <color name = "colorAccent">#000080</color>
+    <color name = "white">#ffffff</color>
+    <color name = "deactivated">#6c6c6c</color>
+    <color name = "activated">#ff0000</color>
+    <color name = "black">#000000</color>
+    <color name = "gray">#404040</color>
+    <color name = "colorTransparentWhite">#52FFFFFF</color>
+    <color name = "lightGray">#808080</color>
+</resources>
