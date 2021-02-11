@@ -15,8 +15,7 @@ import edu.gatech.phileckstrom.faradaycallshield.ui.fragment.ActivityLogFragment
 import edu.gatech.phileckstrom.faradaycallshield.ui.fragment.MessageFragment;
 import edu.gatech.phileckstrom.faradaycallshield.ui.fragment.RulesFragment;
 
-
-
+//Main component for dependency injection
 @Singleton
 @Component(modules = {ApplicationModule.class, RoomModule.class})
 public interface ApplicationComponent {
@@ -28,6 +27,7 @@ public interface ApplicationComponent {
     void inject(CallReceiver receiver);
     void inject(ActivityLogFragment logFragment);
     void inject(MainActivity mainActivity);
+
 
     Application application();
 

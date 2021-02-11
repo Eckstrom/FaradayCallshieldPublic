@@ -1,7 +1,7 @@
 package edu.gatech.phileckstrom.faradaycallshield.ui.dialog;
 
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,9 +9,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CallLog;
 import android.provider.ContactsContract;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetDialogFragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +35,7 @@ import edu.gatech.phileckstrom.faradaycallshield.viewmodel.NewListItemViewModel;
 
 import static android.app.Activity.RESULT_OK;
 
+//Defines behavior for the bottom screen dialog that pops up when adding a new number to block.
 public class AddBlacklistEntryDialogFragment extends BottomSheetDialogFragment {
     Button recent_button, custom_button, contacts_button;
     String inputString;
@@ -128,7 +129,7 @@ public class AddBlacklistEntryDialogFragment extends BottomSheetDialogFragment {
                 }
                 cursor.close();
 
-                android.support.v7.app.AlertDialog.Builder alertDialog = new android.support.v7.app.AlertDialog.Builder(getActivity());
+                androidx.appcompat.app.AlertDialog.Builder alertDialog = new androidx.appcompat.app.AlertDialog.Builder(getActivity());
                 LayoutInflater inflater = getLayoutInflater();
                 View convertView = inflater.inflate(R.layout.lists, null);
                 alertDialog.setView(convertView);

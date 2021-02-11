@@ -1,7 +1,7 @@
 package edu.gatech.phileckstrom.faradaycallshield.repository;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
 
 import edu.gatech.phileckstrom.faradaycallshield.repository.dao.BlackListEntryDao;
 import edu.gatech.phileckstrom.faradaycallshield.repository.dao.DateActivityDao;
@@ -10,7 +10,8 @@ import edu.gatech.phileckstrom.faradaycallshield.repository.entities.ActivityLog
 import edu.gatech.phileckstrom.faradaycallshield.repository.entities.BlackListEntry;
 import edu.gatech.phileckstrom.faradaycallshield.repository.entities.DefaultSMSItem;
 
-@Database(entities = {BlackListEntry.class, ActivityLogItem.class, DefaultSMSItem.class}, version = 3)
+//Declare database entities
+@Database(entities = {BlackListEntry.class, ActivityLogItem.class, DefaultSMSItem.class}, version = 3, exportSchema = false)
 public abstract class BlacklistEntryDatabase extends RoomDatabase {
 
     public abstract BlackListEntryDao blackListEntryDao();

@@ -1,15 +1,14 @@
 package edu.gatech.phileckstrom.faradaycallshield.ui.adapter;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import edu.gatech.phileckstrom.faradaycallshield.ui.fragment.ActivityLogFragment;
 import edu.gatech.phileckstrom.faradaycallshield.ui.fragment.BlackListFragment;
 import edu.gatech.phileckstrom.faradaycallshield.ui.fragment.MessageFragment;
-import edu.gatech.phileckstrom.faradaycallshield.ui.fragment.RulesFragment;
 
-
+//Main class to handle fragments for call log, block list, and SMS
 public class MainPagerAdapter extends FragmentStatePagerAdapter {
     private int num;
 

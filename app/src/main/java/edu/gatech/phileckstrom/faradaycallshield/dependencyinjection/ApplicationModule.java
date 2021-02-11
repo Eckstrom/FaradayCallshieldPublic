@@ -1,4 +1,3 @@
-
 package edu.gatech.phileckstrom.faradaycallshield.dependencyinjection;
 
 import android.app.Application;
@@ -7,7 +6,7 @@ import dagger.Module;
 import dagger.Provides;
 import edu.gatech.phileckstrom.faradaycallshield.misc.FaradayCallshieldApplication;
 
-
+//Required DI Module
 @Module
 public class ApplicationModule {
     private final FaradayCallshieldApplication application;

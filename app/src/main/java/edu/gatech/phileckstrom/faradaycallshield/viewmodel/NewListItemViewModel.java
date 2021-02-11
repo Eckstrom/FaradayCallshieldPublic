@@ -1,6 +1,6 @@
 package edu.gatech.phileckstrom.faradaycallshield.viewmodel;
 
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel;
 import android.os.AsyncTask;
 
 import java.util.List;

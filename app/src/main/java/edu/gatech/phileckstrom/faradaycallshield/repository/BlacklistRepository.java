@@ -1,6 +1,6 @@
 package edu.gatech.phileckstrom.faradaycallshield.repository;
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
@@ -13,7 +13,8 @@ import edu.gatech.phileckstrom.faradaycallshield.repository.entities.ActivityLog
 import edu.gatech.phileckstrom.faradaycallshield.repository.entities.BlackListEntry;
 import edu.gatech.phileckstrom.faradaycallshield.repository.entities.DefaultSMSItem;
 
-
+//Define Java-side declarations for database manipulation functions.
+//These functions will be called by the app and communicated to ROOM from here.
 public class BlacklistRepository {
 
     private final BlackListEntryDao blackListEntryDao;

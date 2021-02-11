@@ -1,16 +1,23 @@
 package edu.gatech.phileckstrom.faradaycallshield;
 
 import android.Manifest;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
+
+import android.app.role.RoleManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
+import androidx.annotation.Nullable;
+import com.google.android.material.tabs.TabLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -20,6 +27,9 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -45,9 +55,48 @@ public class MainActivity extends BaseActivity {
 
     boolean forJason = false;
 
+    private static final int REQUEST_ID = 1;
+
+    public void requestRole() {
+        RoleManager roleManager = (RoleManager) getSystemService(Context.ROLE_SERVICE);
+        Intent intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_CALL_SCREENING);
+        startActivityForResult(intent, REQUEST_ID);
+    }
+
+    //This is for CallScreeningService **PROTOTYPED**
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_ID) {
+            if (resultCode == android.app.Activity.RESULT_OK) {
+                System.out.println("Became the callscreening service.");
+                // Your app is now the call screening app
+            } else {
+                System.out.println("Did NOT become the callscreening service.");
+                // Your app is not the call screening app
+                // Create UI Prompt for service acceptance here
+            }
+        }
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+//
+//        if (ContextCompat.checkSelfPermission(getApplicationContext(),
+//                Manifest.permission.READ_PHONE_STATE)
+//                != PackageManager.PERMISSION_GRANTED) {
+//
+//            // Should we show an explanation?
+//            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+//                    Manifest.permission.READ_CONTACTS)) {
+//            } else {
+//                ActivityCompat.requestPermissions(this,
+//                        new String[]{Manifest.permission.READ_PHONE_STATE},
+//                        MY_PERMISSIONS_REQUEST_READ_PHONE_STATE);
+//            }
+//        }
 
         ((FaradayCallshieldApplication) getApplication())
                 .getApplicationComponent()
@@ -71,7 +120,9 @@ public class MainActivity extends BaseActivity {
 
         setupTabLayout();
         requestPermissions();
+        requestRole();
 
+        boolean isdef = isMyAppLauncherDefault();
     }
 
     @Override
@@ -182,6 +233,27 @@ public class MainActivity extends BaseActivity {
         if (!forJason) {
             defaultSMSButton.setVisibility(GONE);
         }
+    }
+
+    private boolean isMyAppLauncherDefault() {
+        final IntentFilter filter = new IntentFilter(Intent.ACTION_MAIN);
+        filter.addCategory(Intent.CATEGORY_HOME);
+
+        List<IntentFilter> filters = new ArrayList<IntentFilter>();
+        filters.add(filter);
+
+        final String myPackageName = getPackageName();
+        List<ComponentName> activities = new ArrayList<ComponentName>();
+        final PackageManager packageManager = (PackageManager) getPackageManager();
+
+        packageManager.getPreferredActivities(filters, activities, null);
+
+        for (ComponentName activity : activities) {
+            if (myPackageName.equals(activity.getPackageName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void setupTabLayout() {

@@ -2,11 +2,13 @@ package edu.gatech.phileckstrom.faradaycallshield.receivers;
 
 import android.app.NotificationManager;
 import android.content.Context;
-import android.support.v4.app.NotificationCompat;
+import android.content.Intent;
+import androidx.core.app.NotificationCompat;
+import android.telecom.Call;
+import android.telecom.CallScreeningService;
 import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
 
-import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -23,15 +25,7 @@ import edu.gatech.phileckstrom.faradaycallshield.repository.entities.BlackListEn
 import edu.gatech.phileckstrom.faradaycallshield.repository.BlacklistEntryDatabase;
 import edu.gatech.phileckstrom.faradaycallshield.repository.entities.DefaultSMSItem;
 
-
-//Pattern Matching Documentation:
-
-//https://developer.android.com/reference/java/util/regex/Pattern//
-//https://stackoverflow.com/questions/28512464/how-to-match-regex-in-java
-//http://www.vogella.com/tutorials/JavaRegularExpressions/article.html
-//https://www.w3schools.com/sql/sql_like.asp
-
-
+//Main Call Receiver class. This class is now deprecated since CallScreeningService
 public class CallReceiver extends PhonecallReceiver {
 
     @Inject
@@ -106,7 +100,7 @@ public class CallReceiver extends PhonecallReceiver {
                     }
                 });
 
-        //TODO Check the reported cursor numbers of "Unknown" and "Private caller" incoming calls
+        //TODO Handle UNKNOWN numbers here
 //        if(number == "-2")
 //            {
 //                System.out.println("Null number was rejected.");
@@ -120,7 +114,13 @@ public class CallReceiver extends PhonecallReceiver {
 //                Method endCallMethod = telephonyServiceClass.getDeclaredMethod("endCall");
 //                endCallMethod.invoke(telephonyService);
 //            }
-        //TODO to correctly handle above
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        super.onReceive(context, intent);
+
+        
     }
 
 
@@ -170,20 +170,31 @@ public class CallReceiver extends PhonecallReceiver {
     }
 
     private void blockCall(Context ctx) {
-        try {
-            TelephonyManager tm = (TelephonyManager) ctx.getSystemService(Context.TELEPHONY_SERVICE);
-            Class<?> c = Class.forName(tm.getClass().getName());
-            Method m = c.getDeclaredMethod("getITelephony");
-            m.setAccessible(true);
-            Object telephonyService = m.invoke(tm);
-            Class<?> telephonyServiceClass = Class.forName(telephonyService.getClass().getName());
-            Method endCallMethod = telephonyServiceClass.getDeclaredMethod("endCall");
-            endCallMethod.invoke(telephonyService);
-        } catch (Exception e) {
-            System.out.println("Exception when blocking call");
-            e.printStackTrace();
-        }
+        Context ctx2 = ctx.getApplicationContext();
+        TelephonyManager tm = (TelephonyManager) ctx2.getSystemService(Context.TELEPHONY_SERVICE);
 
+        CallScreeningService sv = new CallScreeningService() {
+            @Override
+            public void onScreenCall(Call.Details callDetails) {
+                CallScreeningService.CallResponse response =
+                        new CallScreeningService.CallResponse.Builder().setDisallowCall(true).setRejectCall(true)
+                                .setSkipCallLog(false).setSkipNotification(true).build();
+
+                this.respondToCall(callDetails, response);
+            }
+        };
+
+//        try {
+//            Class<?> classTelephony = Class.forName(tm.getClass().getName());
+//            Method method = classTelephony.getDeclaredMethod("getITelephony");
+//            method.setAccessible(true);
+//            Object telephonyInterface = method.invoke(tm);
+//            Class<?> telephonyInterfaceClass =Class.forName(telephonyInterface.getClass().getName());
+//            Method methodEndCall = telephonyInterfaceClass.getDeclaredMethod("endCall");
+//            methodEndCall.invoke(telephonyInterface);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void sendSMS(String phoneNo, String msg) {

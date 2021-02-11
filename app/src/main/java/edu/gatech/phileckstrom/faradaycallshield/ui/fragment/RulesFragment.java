@@ -2,12 +2,13 @@ package edu.gatech.phileckstrom.faradaycallshield.ui.fragment;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.preference.PreferenceFragmentCompat;
-import android.support.v7.preference.PreferenceManager;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceManager;
 
 import edu.gatech.phileckstrom.faradaycallshield.R;
 
-
+//Dictates user preferences and rules for call blocking
+//UNUSED CURRENTLY
 public class RulesFragment extends PreferenceFragmentCompat
 {
     @Override

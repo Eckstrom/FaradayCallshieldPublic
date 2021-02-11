@@ -1,15 +1,14 @@
 package edu.gatech.phileckstrom.faradaycallshield.viewmodel;
 
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import edu.gatech.phileckstrom.faradaycallshield.repository.BlacklistRepository;
 
-
-
+//Define view model from the various types available
 @Singleton
 public class CustomViewModelFactory implements ViewModelProvider.Factory {
     private final BlacklistRepository repository;

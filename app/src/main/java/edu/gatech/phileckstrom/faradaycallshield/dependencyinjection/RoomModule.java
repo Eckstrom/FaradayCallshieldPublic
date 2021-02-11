@@ -2,10 +2,10 @@
 package edu.gatech.phileckstrom.faradaycallshield.dependencyinjection;
 
 import android.app.Application;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.persistence.db.SupportSQLiteDatabase;
-import android.arch.persistence.room.Room;
-import android.arch.persistence.room.migration.Migration;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.sqlite.db.SupportSQLiteDatabase;
+import androidx.room.Room;
+import androidx.room.migration.Migration;
 
 import javax.inject.Singleton;
 
@@ -18,7 +18,7 @@ import edu.gatech.phileckstrom.faradaycallshield.repository.dao.DateActivityDao;
 import edu.gatech.phileckstrom.faradaycallshield.repository.dao.DefaultSMSItemDao;
 import edu.gatech.phileckstrom.faradaycallshield.viewmodel.CustomViewModelFactory;
 
-//Adding migration:
+//For Migrating databases:
 //.addMigrations(new Migration(1,2) {
 //@Override
 //public void migrate(@NonNull SupportSQLiteDatabase database) {
@@ -26,6 +26,7 @@ import edu.gatech.phileckstrom.faradaycallshield.viewmodel.CustomViewModelFactor
 //        }
 //        })
 
+//Required module for ROOM
 @Module
 public class RoomModule {
 

@@ -1,15 +1,16 @@
 package edu.gatech.phileckstrom.faradaycallshield.repository.dao;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.OnConflictStrategy;
-import android.arch.persistence.room.Query;
+import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
 
 import java.util.List;
 
 import edu.gatech.phileckstrom.faradaycallshield.repository.entities.BlackListEntry;
 
+//Database command object for blacklisted number entries.
 @Dao
 public interface BlackListEntryDao {
 
