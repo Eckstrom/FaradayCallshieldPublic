@@ -13,13 +13,12 @@ import edu.gatech.phileckstrom.faradaycallshield.repository.entities.ActivityLog
 import edu.gatech.phileckstrom.faradaycallshield.repository.entities.BlackListEntry;
 import edu.gatech.phileckstrom.faradaycallshield.repository.entities.DefaultSMSItem;
 
-//Define Java-side declarations for database manipulation functions.
-//These functions will be called by the app and communicated to ROOM from here.
+
 public class BlacklistRepository {
 
-    private final BlackListEntryDao blackListEntryDao;
-    private final DateActivityDao dateActivityDao;
-    private final DefaultSMSItemDao defaultSMSItemDao;
+    public final BlackListEntryDao blackListEntryDao;
+    public final DateActivityDao dateActivityDao;
+    public final DefaultSMSItemDao defaultSMSItemDao;
 
     @Inject
     public BlacklistRepository(BlackListEntryDao blackListEntryDao, DateActivityDao dateActivityDao, DefaultSMSItemDao defaultSMSItemDao) {

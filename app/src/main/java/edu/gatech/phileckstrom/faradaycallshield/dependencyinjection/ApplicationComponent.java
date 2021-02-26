@@ -8,7 +8,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import edu.gatech.phileckstrom.faradaycallshield.MainActivity;
-import edu.gatech.phileckstrom.faradaycallshield.receivers.CallReceiver;
+import edu.gatech.phileckstrom.faradaycallshield.services.CallBlockingService;
 import edu.gatech.phileckstrom.faradaycallshield.ui.dialog.AddBlacklistEntryDialogFragment;
 import edu.gatech.phileckstrom.faradaycallshield.ui.fragment.BlackListFragment;
 import edu.gatech.phileckstrom.faradaycallshield.ui.fragment.ActivityLogFragment;
@@ -24,11 +24,10 @@ public interface ApplicationComponent {
     void inject(MessageFragment messageFragment);
     void inject(RulesFragment rulesFragment);
     void inject(AddBlacklistEntryDialogFragment addBlacklistEntryDialogFragment);
-    void inject(CallReceiver receiver);
     void inject(ActivityLogFragment logFragment);
-    void inject(MainActivity mainActivity);
 
+    void inject(MainActivity mainActivity);
+    void inject(CallBlockingService service);
 
     Application application();
-
 }

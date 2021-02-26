@@ -10,7 +10,6 @@ import java.util.List;
 
 import edu.gatech.phileckstrom.faradaycallshield.repository.entities.ActivityLogItem;
 
-//Database command object for Date number entries.
 @Dao
 public interface DateActivityDao {
 

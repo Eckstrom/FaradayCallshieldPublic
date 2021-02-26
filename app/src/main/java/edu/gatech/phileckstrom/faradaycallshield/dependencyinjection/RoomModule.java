@@ -16,6 +16,7 @@ import edu.gatech.phileckstrom.faradaycallshield.repository.BlacklistEntryDataba
 import edu.gatech.phileckstrom.faradaycallshield.repository.BlacklistRepository;
 import edu.gatech.phileckstrom.faradaycallshield.repository.dao.DateActivityDao;
 import edu.gatech.phileckstrom.faradaycallshield.repository.dao.DefaultSMSItemDao;
+import edu.gatech.phileckstrom.faradaycallshield.services.CallBlockingService;
 import edu.gatech.phileckstrom.faradaycallshield.viewmodel.CustomViewModelFactory;
 
 //For Migrating databases:
@@ -30,7 +31,7 @@ import edu.gatech.phileckstrom.faradaycallshield.viewmodel.CustomViewModelFactor
 @Module
 public class RoomModule {
 
-    private final BlacklistEntryDatabase database;
+    public final BlacklistEntryDatabase database;
 
     public RoomModule(Application application) {
         this.database = Room.databaseBuilder(

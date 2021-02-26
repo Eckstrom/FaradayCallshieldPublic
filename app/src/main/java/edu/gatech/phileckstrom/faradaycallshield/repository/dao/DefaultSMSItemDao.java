@@ -10,7 +10,6 @@ import java.util.List;
 
 import edu.gatech.phileckstrom.faradaycallshield.repository.entities.DefaultSMSItem;
 
-//Database command object for default SMS to be sent to blocked numbers
 @Dao
 public interface DefaultSMSItemDao {
 

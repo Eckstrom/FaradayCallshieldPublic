@@ -8,7 +8,7 @@ import edu.gatech.phileckstrom.faradaycallshield.ui.fragment.ActivityLogFragment
 import edu.gatech.phileckstrom.faradaycallshield.ui.fragment.BlackListFragment;
 import edu.gatech.phileckstrom.faradaycallshield.ui.fragment.MessageFragment;
 
-//Main class to handle fragments for call log, block list, and SMS
+
 public class MainPagerAdapter extends FragmentStatePagerAdapter {
     private int num;
 

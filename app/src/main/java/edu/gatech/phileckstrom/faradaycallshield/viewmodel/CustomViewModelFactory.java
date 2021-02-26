@@ -8,10 +8,9 @@ import javax.inject.Singleton;
 
 import edu.gatech.phileckstrom.faradaycallshield.repository.BlacklistRepository;
 
-//Define view model from the various types available
 @Singleton
 public class CustomViewModelFactory implements ViewModelProvider.Factory {
-    private final BlacklistRepository repository;
+    public final BlacklistRepository repository;
 
     @Inject
     public CustomViewModelFactory(BlacklistRepository repository) {

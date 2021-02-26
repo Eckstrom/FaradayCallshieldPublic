@@ -35,7 +35,6 @@ import edu.gatech.phileckstrom.faradaycallshield.viewmodel.NewListItemViewModel;
 
 import static android.app.Activity.RESULT_OK;
 
-//Defines behavior for the bottom screen dialog that pops up when adding a new number to block.
 public class AddBlacklistEntryDialogFragment extends BottomSheetDialogFragment {
     Button recent_button, custom_button, contacts_button;
     String inputString;
@@ -45,9 +44,9 @@ public class AddBlacklistEntryDialogFragment extends BottomSheetDialogFragment {
 
 
     @Inject
-    ViewModelProvider.Factory viewModelFactory;
+    public ViewModelProvider.Factory viewModelFactory;
 
-    private NewListItemViewModel newListItemViewModel;
+    public NewListItemViewModel newListItemViewModel;
 
     public AddBlacklistEntryDialogFragment() {
         // Required empty public constructor
@@ -198,11 +197,11 @@ public class AddBlacklistEntryDialogFragment extends BottomSheetDialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         inputString = userInput.getText().toString();
                         if(userInput.getText().toString().contains("(") || userInput.getText().toString().contains("/") ||
-                           userInput.getText().toString().contains(")") || userInput.getText().toString().contains("N") ||
-                           userInput.getText().toString().contains(",") || userInput.getText().toString().contains(".") ||
-                           userInput.getText().toString().contains("*") || userInput.getText().toString().contains(";") ||
-                           userInput.getText().toString().contains("-") || userInput.getText().toString().contains("+") ||
-                           userInput.getText().toString().contains(" ")){
+                                userInput.getText().toString().contains(")") || userInput.getText().toString().contains("N") ||
+                                userInput.getText().toString().contains(",") || userInput.getText().toString().contains(".") ||
+                                userInput.getText().toString().contains("*") || userInput.getText().toString().contains(";") ||
+                                userInput.getText().toString().contains("-") || userInput.getText().toString().contains("+") ||
+                                userInput.getText().toString().contains(" ")){
 
                             userInput.setError("Please enter '#' to wild-card a digit.");
                         }

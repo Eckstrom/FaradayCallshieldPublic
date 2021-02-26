@@ -7,8 +7,7 @@ import androidx.preference.PreferenceManager;
 
 import edu.gatech.phileckstrom.faradaycallshield.R;
 
-//Dictates user preferences and rules for call blocking
-//UNUSED CURRENTLY
+
 public class RulesFragment extends PreferenceFragmentCompat
 {
     @Override
@@ -21,7 +20,7 @@ public class RulesFragment extends PreferenceFragmentCompat
             @Override
             public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s)
             {
-                
+
             }
         });
     }

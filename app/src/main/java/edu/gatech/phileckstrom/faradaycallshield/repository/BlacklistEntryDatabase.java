@@ -10,7 +10,6 @@ import edu.gatech.phileckstrom.faradaycallshield.repository.entities.ActivityLog
 import edu.gatech.phileckstrom.faradaycallshield.repository.entities.BlackListEntry;
 import edu.gatech.phileckstrom.faradaycallshield.repository.entities.DefaultSMSItem;
 
-//Declare database entities
 @Database(entities = {BlackListEntry.class, ActivityLogItem.class, DefaultSMSItem.class}, version = 3, exportSchema = false)
 public abstract class BlacklistEntryDatabase extends RoomDatabase {
 

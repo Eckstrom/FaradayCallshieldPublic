@@ -9,7 +9,7 @@ import edu.gatech.phileckstrom.faradaycallshield.misc.FaradayCallshieldApplicati
 //Required DI Module
 @Module
 public class ApplicationModule {
-    private final FaradayCallshieldApplication application;
+    public final FaradayCallshieldApplication application;
     public ApplicationModule(FaradayCallshieldApplication application) {
         this.application = application;
     }

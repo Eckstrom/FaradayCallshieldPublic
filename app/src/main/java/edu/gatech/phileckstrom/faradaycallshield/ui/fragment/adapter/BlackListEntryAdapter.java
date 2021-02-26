@@ -20,7 +20,7 @@ import edu.gatech.phileckstrom.faradaycallshield.viewmodel.ListItemCollectionVie
 //Custom recyclerview adapter class
 public class BlackListEntryAdapter extends ListAdapter<BlackListEntry, BlackListEntryAdapter.BlackListViewHolder> {
 
-    private final ListItemCollectionViewModel listItemCollectionViewModel;
+    public final ListItemCollectionViewModel listItemCollectionViewModel;
 
     public BlackListEntryAdapter(ListItemCollectionViewModel viewModel) {
         super(new DiffUtil.ItemCallback<BlackListEntry>() {

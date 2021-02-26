@@ -8,11 +8,9 @@ import java.util.List;
 import edu.gatech.phileckstrom.faradaycallshield.repository.entities.BlackListEntry;
 import edu.gatech.phileckstrom.faradaycallshield.repository.BlacklistRepository;
 
-
-
 public class NewListItemViewModel extends ViewModel {
 
-    private BlacklistRepository repository;
+    public BlacklistRepository repository;
 
     NewListItemViewModel(BlacklistRepository repository) {
         this.repository = repository;

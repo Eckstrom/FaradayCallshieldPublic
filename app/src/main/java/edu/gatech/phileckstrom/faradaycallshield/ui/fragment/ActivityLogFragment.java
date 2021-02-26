@@ -34,11 +34,12 @@ import edu.gatech.phileckstrom.faradaycallshield.ui.fragment.adapter.ActivityLog
 import edu.gatech.phileckstrom.faradaycallshield.viewmodel.ListItemCollectionViewModel;
 
 //If calling from fragment, use Childmanager, otherwise regular fragment manager.
-//Dictates behavior for the Call Log fragment
+
+
 public class ActivityLogFragment extends Fragment {
 
     @Inject
-    ViewModelProvider.Factory viewModelFactory;
+    public ViewModelProvider.Factory viewModelFactory;
 
     public ListItemCollectionViewModel listItemCollectionViewModel;
 

@@ -23,17 +23,17 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-//Dictates behavior for the SMS fragment view
+
 public class MessageFragment extends Fragment {
 
     @Inject
-    ViewModelProvider.Factory viewModelFactory;
+    public ViewModelProvider.Factory viewModelFactory;
 
-    ListItemCollectionViewModel listItemCollectionViewModel;
+    public ListItemCollectionViewModel listItemCollectionViewModel;
 
-    private RecyclerView recyclerView;
+    public RecyclerView recyclerView;
 
-    private List<BlackListEntry> listOfData;
+    public List<BlackListEntry> listOfData;
 
 
     //Unused constructor

@@ -25,8 +25,8 @@ import edu.gatech.phileckstrom.faradaycallshield.viewmodel.ListItemCollectionVie
 //Custom recyclerview adapter class
 public class MessageEntryAdapter extends ListAdapter<BlackListEntry, MessageEntryAdapter.MessageListViewHolder> {
 
-    private final ListItemCollectionViewModel listItemCollectionViewModel;
-    private final Context context;
+    public final ListItemCollectionViewModel listItemCollectionViewModel;
+    public final Context context;
 
 
     public MessageEntryAdapter(ListItemCollectionViewModel viewModel, Context ctx) {

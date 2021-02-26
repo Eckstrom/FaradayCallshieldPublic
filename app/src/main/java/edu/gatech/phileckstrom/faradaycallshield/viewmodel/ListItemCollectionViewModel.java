@@ -11,10 +11,9 @@ import edu.gatech.phileckstrom.faradaycallshield.repository.BlacklistRepository;
 import edu.gatech.phileckstrom.faradaycallshield.repository.entities.ActivityLogItem;
 import edu.gatech.phileckstrom.faradaycallshield.repository.entities.DefaultSMSItem;
 
-
 public class ListItemCollectionViewModel extends ViewModel {
 
-    private BlacklistRepository repository;
+    public BlacklistRepository repository;
 
     ListItemCollectionViewModel(BlacklistRepository repository) {
         this.repository = repository;

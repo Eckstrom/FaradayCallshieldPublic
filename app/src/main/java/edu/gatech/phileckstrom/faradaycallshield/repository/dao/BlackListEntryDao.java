@@ -10,7 +10,6 @@ import java.util.List;
 
 import edu.gatech.phileckstrom.faradaycallshield.repository.entities.BlackListEntry;
 
-//Database command object for blacklisted number entries.
 @Dao
 public interface BlackListEntryDao {
 

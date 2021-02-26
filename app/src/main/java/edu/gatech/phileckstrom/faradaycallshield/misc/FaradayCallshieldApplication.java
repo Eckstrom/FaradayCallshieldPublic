@@ -7,9 +7,8 @@ import edu.gatech.phileckstrom.faradaycallshield.dependencyinjection.Application
 import edu.gatech.phileckstrom.faradaycallshield.dependencyinjection.DaggerApplicationComponent;
 import edu.gatech.phileckstrom.faradaycallshield.dependencyinjection.RoomModule;
 
-//Main Application
 public class FaradayCallshieldApplication extends Application {
-    private ApplicationComponent applicationComponent;
+    public ApplicationComponent applicationComponent;
 
     @Override
     public void onCreate() {
@@ -19,6 +18,7 @@ public class FaradayCallshieldApplication extends Application {
                 .builder()
                 .applicationModule(new ApplicationModule(this))
                 .roomModule(new RoomModule(this)).build();
+
     }
 
     public ApplicationComponent getApplicationComponent() {

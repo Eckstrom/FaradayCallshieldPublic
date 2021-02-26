@@ -26,7 +26,8 @@ import edu.gatech.phileckstrom.faradaycallshield.ui.fragment.adapter.BlackListEn
 import edu.gatech.phileckstrom.faradaycallshield.viewmodel.ListItemCollectionViewModel;
 
 //If calling from fragment, use Childmanager, otherwise regular fragment manager.
-//Dictates behavior for the blacklisted numbers fragment
+
+
 public class BlackListFragment extends Fragment implements View.OnClickListener {
 
     @Inject
