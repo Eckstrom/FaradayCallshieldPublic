@@ -38,13 +38,11 @@ class CallBlockingService : CallScreeningService() {
         respondToCall(callDetails, response.build())
     }
 
+    //Clean up this method and make it more succinct
     private fun handlePhoneCall(response: CallResponse.Builder, phoneNumber: String): CallResponse.Builder {
 
         val date = getDate()
         val time = getTime()
-
-        if(db.blackListEntryDao()?.getNumberMatches(phoneNumber) == null)
-            Log.d("Nullify", "Yep, it's still null, Jim")
 
         val matches = db.blackListEntryDao()?.getNumberMatches(phoneNumber)
         val defaultSMSResponse = db.defaultSMSItemDao()?.getMessagePresence("1")?.get(0)
@@ -59,8 +57,6 @@ class CallBlockingService : CallScreeningService() {
                     setRejectCall(true)
                     setDisallowCall(true)
                     setSkipCallLog(false)
-                    //
-                    displayToast(String.format("Rejected call from %s", phoneNumber))
                 }
                 if (entry.isSendingResponse && entry.replyMessage != "No custom message set!") {
                     sendSMS(phoneNumber, entry.replyMessage)
@@ -74,6 +70,7 @@ class CallBlockingService : CallScreeningService() {
                     }
                 }
                 updateCallLog(time, date, contact)
+                return response
             }
         }
 
@@ -90,8 +87,6 @@ class CallBlockingService : CallScreeningService() {
                             setRejectCall(true)
                             setDisallowCall(true)
                             setSkipCallLog(false)
-                            //
-                            displayToast(String.format("Rejected call from %s", phoneNumber))
                         }
                         if (isSending && currMessage == "No custom message set!") {
                             sendSMS(phoneNumber, currMessage)
@@ -105,16 +100,17 @@ class CallBlockingService : CallScreeningService() {
                             }
                         }
                         updateCallLog(time, date, phoneNumber)
+                        return response
                     }
                 }
-            } else{
+            }
+            else{
                 with(response) {
-                    setRejectCall(true)
-                    setDisallowCall(true)
+                    setRejectCall(false)
+                    setDisallowCall(false)
                     setSkipCallLog(false)
-                    //
-                    displayToast(String.format("Rejected call from %s", phoneNumber))
                 }
+                return response
             }
         }
         return response
@@ -159,7 +155,7 @@ class CallBlockingService : CallScreeningService() {
 
     fun updateCallLog(time: String?, date: String?, number: String?) {
         val currentCaller = ActivityLogItem(date, time, number)
-        //db!!.dateActivityDao().insert(currentCaller)
+        db.dateActivityDao().insert(currentCaller)
     }
 
     fun sendSMS(phoneNo: String?, msg: String?) {
